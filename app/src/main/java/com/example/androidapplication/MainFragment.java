@@ -47,7 +47,7 @@ public class MainFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     ProfessionHelperClass p=snapshot.getValue(ProfessionHelperClass.class);
-                    String pi=profession.toString().trim();
+                    String pi= p.profession;
                     profession.setText("Profession: "+pi);
                 }
                 @Override
