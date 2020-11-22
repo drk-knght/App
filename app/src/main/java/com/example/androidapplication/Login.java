@@ -103,7 +103,6 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            finish();
 
                             //Add user to firebase database
                             rootNode=FirebaseDatabase.getInstance();
@@ -120,14 +119,17 @@ public class Login extends AppCompatActivity {
 
                             UserHelperClass helpers =new UserHelperClass(name,email,password);
                             reference.child(name).setValue(helpers);
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(name).build();
 
-                            user.updateProfile(profileUpdates);
+                            task.getResult().getUser().updateProfile(profileUpdates); //Update User Display Name here
+
                             Toast.makeText(Login.this, "User Created!!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
+                            finish();
 
                         }else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
