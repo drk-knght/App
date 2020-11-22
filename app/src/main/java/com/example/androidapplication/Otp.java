@@ -3,6 +3,7 @@ package com.example.androidapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 
 import java.util.concurrent.TimeUnit;
@@ -47,6 +50,7 @@ public class Otp extends AppCompatActivity {
         state=findViewById(R.id.state);
         codePicker=findViewById(R.id.ccp);
 
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +73,9 @@ public class Otp extends AppCompatActivity {
                       if(!userOTP.isEmpty() && userOTP.length()==6){
                           PhoneAuthCredential credential=PhoneAuthProvider.getCredential(verificationId,userOTP);
                           verifyAuth(credential);
+                          Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                          startActivity(intent);
+                          finish();
                       }
                       else
                       {
@@ -85,6 +92,8 @@ public class Otp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Otp.this, "Authentication is Successful", Toast.LENGTH_SHORT).show();
+                    //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                    //DatabaseReference usersRef = rootRef.child("Phone no");
                 }
                 else
                 {
@@ -93,6 +102,9 @@ public class Otp extends AppCompatActivity {
             }
         });
     }
+
+
+
     private void requestOtp(String phoneNum){
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNum, 60L, TimeUnit.SECONDS, this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 

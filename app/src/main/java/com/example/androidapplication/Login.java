@@ -24,6 +24,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -31,7 +34,7 @@ public class Login extends AppCompatActivity {
 
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN=123;
-    EditText mFullName,mEmail,mPassword;
+    EditText mFullName,mEmail,mPassword,mNaukri;
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
@@ -39,14 +42,18 @@ public class Login extends AppCompatActivity {
     String userID;
     private FirebaseAuth mAuth;
 
+    FirebaseDatabase rootNode;
+    DatabaseReference reference,reference_2;
+
     @Override
     protected void onStart() {
         super.onStart();
 
         FirebaseUser user=mAuth.getCurrentUser();
         if(user!=null){
-            Intent intent=new Intent(getApplicationContext(),Otp.class);
+            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -60,6 +67,7 @@ public class Login extends AppCompatActivity {
         mPassword   = findViewById(R.id.password);
         mRegisterBtn= findViewById(R.id.loginBtn);
         mLoginBtn   = findViewById(R.id.createText);
+        mNaukri=findViewById(R.id.Naukri_custom);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -91,13 +99,35 @@ public class Login extends AppCompatActivity {
                 }
 
                 // register the user in firebase
-
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            finish();
+
+                            //Add user to firebase database
+                            rootNode=FirebaseDatabase.getInstance();
+                            reference=rootNode.getReference("users");
+                            reference_2=rootNode.getReference("Profession");
+
+                            String name=mFullName.getText().toString();
+                            String password=mPassword.getText().toString();
+                            String email=mEmail.getText().toString();
+                            String Profession=mNaukri.getText().toString();
+
+                            ProfessionHelperClass pro=new ProfessionHelperClass(Profession);
+                            reference_2.child(name).setValue(pro);
+
+                            UserHelperClass helpers =new UserHelperClass(name,email,password);
+                            reference.child(name).setValue(helpers);
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name).build();
+
+                            user.updateProfile(profileUpdates);
                             Toast.makeText(Login.this, "User Created!!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Otp.class));
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                         }else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -114,6 +144,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        // google sign in
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -172,8 +203,12 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+                            finish();
+
+                            //add data to firebase database in Profile Section
+
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent=new Intent(getApplicationContext(),Otp.class);
+                            Intent intent=new Intent(getApplicationContext(),Prof.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
