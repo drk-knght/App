@@ -72,10 +72,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if(menuitem.getItemId()==R.id.todo){
-           // fragmentManager=getSupportFragmentManager();
-            //fragmentTransaction=fragmentManager.beginTransaction();
-            //fragmentTransaction.replace(R.id.container_fragment,new Todo());
-            //fragmentTransaction.commit();
+            Intent intent1=new Intent(MainActivity.this,ToDo.class);
+            startActivity(intent1);
         }
 
         if(menuitem.getItemId()==R.id.items){
