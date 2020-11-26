@@ -15,10 +15,6 @@
                 android:id="@+id/items"
                 android:icon="@drawable/ic_baseline_store_24"
                 android:title="Items Available" />
-            <item
-                android:id="@+id/trigger"
-                android:icon="@drawable/ic_baseline_access_alarms_24"
-                android:title="Trigger" />
         </menu>
     </item>
     <item android:title="Communication">

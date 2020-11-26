@@ -8,39 +8,28 @@
 
     <ImageView
         android:id="@+id/Profile_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="213dp"
+        android:layout_height="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208"
+        app:layout_constraintVertical_bias="0.118"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/sign_out"
-        android:layout_width="64dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/Profile_img"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logout" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="340dp"
         android:layout_height="65dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
         android:text="hello"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Profile_img" />
 
@@ -54,6 +43,7 @@
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:text="hello"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +59,7 @@
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:text="hello"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,10 +69,40 @@
         android:id="@+id/profession"
         android:layout_width="340dp"
         android:layout_height="65dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
         android:text="hello"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/sign_out"
+        android:layout_width="113dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="600dp"
+        android:text="SIGN OUT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonLoadPicture"
+        android:layout_width="161dp"
+        android:layout_height="49dp"
+        android:text="Load Picture"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Profile_img"
+        app:layout_constraintVertical_bias="0.354" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,7 +70,7 @@ public class FireBase_login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(FireBase_login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Personal_Info.class));
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else {
                             Toast.makeText(FireBase_login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

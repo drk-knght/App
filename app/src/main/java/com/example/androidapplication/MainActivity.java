@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
 
         drawerLayout.closeDrawer(GravityCompat.START);
+
         if(menuitem.getItemId()==R.id.profile){
             fragmentManager=getSupportFragmentManager();
             fragmentTransaction=fragmentManager.beginTransaction();
@@ -71,23 +72,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if(menuitem.getItemId()==R.id.todo){
-            fragmentManager=getSupportFragmentManager();
-            fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment,new Todo());
-            fragmentTransaction.commit();
+           // fragmentManager=getSupportFragmentManager();
+            //fragmentTransaction=fragmentManager.beginTransaction();
+            //fragmentTransaction.replace(R.id.container_fragment,new Todo());
+            //fragmentTransaction.commit();
         }
 
         if(menuitem.getItemId()==R.id.items){
             fragmentManager=getSupportFragmentManager();
             fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment,new items());
-            fragmentTransaction.commit();
-        }
-
-        if(menuitem.getItemId()==R.id.trigger){
-            fragmentManager=getSupportFragmentManager();
-            fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment,new trigger());
             fragmentTransaction.commit();
         }
 
