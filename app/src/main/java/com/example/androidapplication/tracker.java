@@ -56,7 +56,7 @@ public class tracker extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId()){
             case R.id.addItems : i = new Intent(this,additemActivity.class); startActivity(i); break;
             case R.id.deleteItems : i = new Intent(this,deleteItemsActivity.class);startActivity(i); break;
-            case R.id.scanItems : i = new Intent(this,scanItemsActivity.class);startActivity(i); break;
+            case R.id.scanItems : i = new Intent(this, SearchItemActivity.class);startActivity(i); break;
             case R.id.viewInventory : i = new Intent(this,viewInventoryActivity.class);startActivity(i); break;
             default: break;
         }

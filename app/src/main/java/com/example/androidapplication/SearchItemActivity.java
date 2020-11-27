@@ -25,10 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class scanItemsActivity extends AppCompatActivity {
+public class SearchItemActivity extends AppCompatActivity {
     public static EditText resultsearcheview;
     private FirebaseAuth firebaseAuth;
-    ImageButton scantosearch;
     Button searchbtn;
     ItemAdapter adapter;
     RecyclerView mrecyclerview;
@@ -39,9 +38,8 @@ public class scanItemsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_items);
         firebaseAuth = FirebaseAuth.getInstance();
-        mdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child("Items");
+        mdatabaseReference = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).child("Items");
         resultsearcheview = findViewById(R.id.searchfield);
-        scantosearch = findViewById(R.id.imageButtonsearch);
         searchbtn = findViewById(R.id.searchbtnn);
 
         mrecyclerview = findViewById(R.id.recyclerViews);
@@ -53,13 +51,6 @@ public class scanItemsActivity extends AppCompatActivity {
         mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
 
 
-        scantosearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ScanCodeActivitysearch.class));
-            }
-        });
-
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +61,7 @@ public class scanItemsActivity extends AppCompatActivity {
     }
 
     public void firebasesearch(String searchtext){
-        Query firebaseSearchQuery = mdatabaseReference.orderByChild("itembarcode").startAt(searchtext).endAt(searchtext+"\uf8ff");
+        Query firebaseSearchQuery = mdatabaseReference.orderByChild("itemname").startAt(searchtext).endAt(searchtext);
 
         FirebaseRecyclerOptions<Items> options =
                 new FirebaseRecyclerOptions.Builder<Items>()
@@ -84,13 +75,11 @@ public class scanItemsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        adapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.stopListening();
     }
 
 }

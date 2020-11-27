@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AndroidApplication.NoActionBar">
         <activity android:name=".viewInventoryActivity"></activity>
         <activity android:name=".ScanCodeActivitysearch" />
-        <activity android:name=".scanItemsActivity" />
+        <activity android:name=".SearchItemActivity" />
         <activity android:name=".ScanCodeActivitydel" />
         <activity android:name=".deleteItemsActivity" />
         <activity android:name=".ScanCodeActivity" />
