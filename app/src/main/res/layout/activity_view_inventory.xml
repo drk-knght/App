@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".viewInventoryActivity"
     android:orientation="vertical"
-    android:background="@drawable/backgroundgradient">
+    android:background="@drawable/tracker_back">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No of Items = "
-            android:textColor="#FFFFFF"
+            android:textColor="#0B0A0A"
             android:id="@+id/viewInventory"
             android:textStyle="bold"
             android:textSize="20dp"
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="#070707"
             android:text=" Total sum = $ "
             android:layout_marginLeft="30dp"
             android:textSize="20dp"
