@@ -17,8 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class additemActivity extends AppCompatActivity {
-    private EditText itemname,itemcategory,itemprice;
-    private TextView itembarcode;
+    private EditText itemname,itemcategory,itemQty;
     private FirebaseAuth firebaseAuth;
     public static TextView resulttextview;
     Button scanbutton, additemtodatabase;
@@ -31,26 +30,17 @@ public class additemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_additem);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReferencecat = FirebaseDatabase.getInstance().getReference("Users");
-        resulttextview = findViewById(R.id.barcodeview);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+        databaseReference = databaseReference.child(user.getDisplayName());
+
         additemtodatabase = findViewById(R.id.additembuttontodatabase);
-        scanbutton = findViewById(R.id.buttonscan);
         itemname = findViewById(R.id.edititemname);
         itemcategory= findViewById(R.id.editcategory);
-        itemprice = findViewById(R.id.editprice);
-        itembarcode= findViewById(R.id.barcodeview);
+        itemQty = findViewById(R.id.editqty);
 
 
         // String result = finaluser.substring(0, finaluser.indexOf("@"));
-
-
-        scanbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
-            }
-        });
 
         additemtodatabase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,29 +54,27 @@ public class additemActivity extends AppCompatActivity {
 
     // addding item to databse
     public  void additem() {
-        String itemnameValue = itemname.getText().toString();
-        String itemcategoryValue = itemcategory.getText().toString();
-        String itempriceValue = itemprice.getText().toString();
-        String itembarcodeValue = itembarcode.getText().toString();
-        if (itembarcodeValue.isEmpty()) {
-            itembarcode.setError("It's Empty");
-            itembarcode.requestFocus();
-            return;
+
+        try {
+            String itemnameValue = itemname.getText().toString();
+            String itemcategoryValue = itemcategory.getText().toString();
+            int itemQuantity = Integer.valueOf(itemQty.getText().toString());
+
+
+            if (!TextUtils.isEmpty(itemnameValue) && !TextUtils.isEmpty(itemcategoryValue) && itemQuantity > 0) {
+
+                Items items = new Items(itemnameValue, itemcategoryValue, itemQuantity);
+                databaseReference.child("Items").child(itemnameValue).setValue(items);
+                itemname.setText("");
+                itemQty.setText("");
+                itemcategory.setText("");
+                Toast.makeText(additemActivity.this, itemnameValue + " Added", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(additemActivity.this, "Please Fill all the fields", Toast.LENGTH_SHORT).show();
+            }
         }
-
-
-        if (!TextUtils.isEmpty(itemnameValue) && !TextUtils.isEmpty(itemcategoryValue) && !TextUtils.isEmpty(itempriceValue)) {
-
-            Items items = new Items(itemnameValue, itemcategoryValue, itempriceValue, itembarcodeValue);
-            databaseReference.child("Items").child(itembarcodeValue).setValue(items);
-            databaseReferencecat.child("ItemByCategory").child(itemcategoryValue).child(itembarcodeValue).setValue(items);
-            itemname.setText("");
-            itembarcode.setText("");
-            itemprice.setText("");
-            itembarcode.setText("");
-            Toast.makeText(additemActivity.this, itemnameValue + " Added", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(additemActivity.this, "Please Fill all the fields", Toast.LENGTH_SHORT).show();
+        catch (Exception exp){
+            Toast.makeText(additemActivity.this, "Please Fill all the fields properly", Toast.LENGTH_SHORT).show();
         }
     }
 }

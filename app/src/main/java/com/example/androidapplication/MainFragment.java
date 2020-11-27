@@ -90,8 +90,10 @@ public class MainFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     ProfessionHelperClass p=snapshot.getValue(ProfessionHelperClass.class);
-                    String pi= p.profession;
-                    profession.setText("Profession: "+pi);
+                    if(p != null) {
+                        String pi = p.profession;
+                        profession.setText("Profession: " + pi);
+                    }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -103,8 +105,10 @@ public class MainFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snap) {
                     MobileHelperClass mo=snap.getValue(MobileHelperClass.class);
-                    String no=mo.MobileNo+" ";
-                    PhoneNo.setText("Phone Number:"+no);
+                    if(mo != null) {
+                        String no = mo.MobileNo + " ";
+                        PhoneNo.setText("Phone Number:" + no);
+                    }
                 }
 
                 @Override

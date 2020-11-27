@@ -19,9 +19,8 @@ public class ItemAdapter extends FirebaseRecyclerAdapter<Items,ItemAdapter.ItemH
 
     @Override
     protected void onBindViewHolder(@NonNull ItemHolder holder, int position, @NonNull Items model) {
-        holder.viewitembarcode.setText(model.getItembarcode());
         holder.viewitemname.setText(model.getItemname());
-        holder.viewitemprice.setText(model.getItemprice());
+        holder.viewItemQty.setText(String.valueOf(model.getItemqty()));
         holder.viewitemcategory.setText(model.getItemcategory());
     }
 
@@ -35,12 +34,12 @@ public class ItemAdapter extends FirebaseRecyclerAdapter<Items,ItemAdapter.ItemH
     }
 
     class ItemHolder extends RecyclerView.ViewHolder{
-        TextView viewitembarcode,viewitemname,viewitemprice,viewitemcategory;
+        TextView viewitemname,viewItemQty,viewitemcategory;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            viewitembarcode=itemView.findViewById(R.id.viewitembarcode);
             viewitemname=itemView.findViewById(R.id.viewitemname);
-            viewitemprice=itemView.findViewById(R.id.viewitemprice);
+            viewItemQty=itemView.findViewById(R.id.viewitemqty_new);
+//            viewItemQty=itemView.findViewById(R.id.viewitemqtyname);
             viewitemcategory=itemView.findViewById(R.id.viewitemcategory);
         }
     }

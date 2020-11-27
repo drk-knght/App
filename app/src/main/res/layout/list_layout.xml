@@ -17,25 +17,6 @@
         android:background="@drawable/backgroundgradient"
         android:padding="5dp"
         >
-        <TextView
-            android:id="@+id/viewitembarcodename"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffff"
-            android:textStyle="bold"
-            android:text="Item Barcode" />
-
-
-        <TextView
-            android:id="@+id/viewitembarcode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="53dp"
-            android:textColor="#ffff"
-            android:layout_marginLeft="50dp"
-            android:layout_toEndOf="@+id/viewitembarcodename"
-            android:text="TextView"
-            android:layout_toRightOf="@+id/viewitembarcodename" />
 
         <TextView
             android:id="@+id/viewitemnamename"
@@ -60,25 +41,25 @@
             android:layout_toRightOf="@+id/viewitemnamename" />
 
         <TextView
-            android:id="@+id/viewitempricename"
+            android:id="@+id/viewitemqtyname"
             android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffff"
             android:textStyle="bold"
-            android:text="Item Price $" />
+            android:text="Item Qty $" />
 
         <TextView
-            android:id="@+id/viewitemprice"
+            android:id="@+id/viewitemqty_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="62dp"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
             android:textColor="#ffff"
-            android:layout_toEndOf="@+id/viewitempricename"
+            android:layout_toEndOf="@+id/viewitemqtyname"
             android:text="TextView"
-            android:layout_toRightOf="@+id/viewitempricename" />
+            android:layout_toRightOf="@+id/viewitemqtyname" />
 
         <TextView
             android:id="@+id/viewitemcategoryname"

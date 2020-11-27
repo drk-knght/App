@@ -37,7 +37,7 @@ public class viewInventoryActivity extends AppCompatActivity {
         totalnoofsum = findViewById(R.id.totalsum);
         firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser users = firebaseAuth.getCurrentUser();
-        mdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child("Items");
+        mdatabaseReference = FirebaseDatabase.getInstance().getReference("users").child(users.getDisplayName()).child("Items");
         mrecyclerview = findViewById(R.id.recyclerViews);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         mrecyclerview.setLayoutManager(manager);
@@ -60,30 +60,31 @@ public class viewInventoryActivity extends AppCompatActivity {
 
             }
         });
-
-        mdatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int sum=0;
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    Map<String,Object> map = (Map<String, Object>) ds.getValue();
-                    Object price = map.get("itemprice");
-                    int pValue = Integer.parseInt(String.valueOf(price));
-                    sum += pValue;
-                    totalnoofsum.setText(String.valueOf(sum));
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//
+//        mdatabaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                int sum=0;
+//                for(DataSnapshot ds : dataSnapshot.getChildren()){
+//                    System.out.println("Hello");
+////                    Map<String,Object> map = (Map<String, Object>) ds.getValue();
+////                    Object price = map.get("itemprice");
+////                    int pValue = Integer.parseInt(String.valueOf(price));
+////                    sum += pValue;
+////                    totalnoofsum.setText(String.valueOf(sum));
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         FirebaseRecyclerOptions<Items> options =
                 new FirebaseRecyclerOptions.Builder<Items>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Users"), Items.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference("users").child(users.getDisplayName()).child("Items"), Items.class)
                         .build();
 
         adapter=new ItemAdapter(options);
