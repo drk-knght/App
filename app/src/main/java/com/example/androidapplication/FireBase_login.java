@@ -25,8 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class FireBase_login extends AppCompatActivity {
 
     EditText mFullName,mEmail,mPassword;
-    Button mRegisterBtn;
-    TextView mLoginBtn;
+    TextView mRegisterBtn;
+    Button mLoginBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -38,8 +38,8 @@ public class FireBase_login extends AppCompatActivity {
         mEmail      = findViewById(R.id.Email);
         mPassword   = findViewById(R.id.password);
         fAuth = FirebaseAuth.getInstance();
-        mRegisterBtn= findViewById(R.id.loginBtn);
-        mLoginBtn   = findViewById(R.id.createText);
+        mLoginBtn=findViewById(R.id.loginBtn);
+        mRegisterBtn=findViewById(R.id.createText);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +81,7 @@ public class FireBase_login extends AppCompatActivity {
             }
         });
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Login.class));
