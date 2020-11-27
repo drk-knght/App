@@ -34,7 +34,7 @@ import java.io.IOException;
 import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment {
-    TextView name,email,profession;
+    TextView name,email,profession,MobileNo;
     private static int RESULT_LOAD_IMAGE = 1;
     Button button, buttonLoadImage ;
     ImageView mImageview;
@@ -83,6 +83,7 @@ public class MainFragment extends Fragment {
             name.setText("Username: "+n);
             String e=user.getEmail();
             email.setText("Email Id: "+e);
+
             DatabaseReference ProfRef=rootRef.child("Profession").child(user.getDisplayName());
             ProfRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -93,7 +94,21 @@ public class MainFragment extends Fragment {
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    System.out.println("The read Failed");
+                    System.out.println("The read Failed for  Profession!!");
+                }
+            });
+            DatabaseReference Mob=rootRef.child("PhoneNo").child(user.getDisplayName());
+            Mob.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snap) {
+                    MobileHelperClass mo=snap.getValue(MobileHelperClass.class);
+                    String no=mo.MobileNo;
+                    MobileNo.setText("Phone Number:"+no);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    System.out.println("The read Failed for Mobile!!");
                 }
             });
         }

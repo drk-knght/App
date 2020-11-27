@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,8 @@ public class Otp extends AppCompatActivity {
     String verificationId;
     PhoneAuthProvider.ForceResendingToken token;
     Boolean verificationInProgress=false;
+    FirebaseAuth mAuth;
+    FirebaseUser user=mAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +95,9 @@ public class Otp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Otp.this, "Authentication is Successful", Toast.LENGTH_SHORT).show();
-                    //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                    //DatabaseReference usersRef = rootRef.child("Phone no");
+                    MobileHelperClass mo=new MobileHelperClass(phoneNumber.toString());
+                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                    rootRef.child("PhoneNo").child(user.getDisplayName()).setValue(mo);
                 }
                 else
                 {

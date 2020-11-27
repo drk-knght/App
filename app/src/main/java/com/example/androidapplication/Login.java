@@ -122,12 +122,12 @@ public class Login extends AppCompatActivity {
 
 
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(name).build();
+                                    .setDisplayName((String) name).build();
 
                             task.getResult().getUser().updateProfile(profileUpdates); //Update User Display Name here
 
                             Toast.makeText(Login.this, "User Created!!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),Otp.class));
 
                             finish();
 

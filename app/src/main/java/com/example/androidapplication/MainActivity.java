@@ -77,17 +77,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if(menuitem.getItemId()==R.id.items){
-            fragmentManager=getSupportFragmentManager();
-            fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment,new items());
-            fragmentTransaction.commit();
+            Intent intent=new Intent(MainActivity.this,tracker.class);
+            startActivity(intent);
         }
 
         if(menuitem.getItemId()==R.id.share){
-            fragmentManager=getSupportFragmentManager();
+            /*fragmentManager=getSupportFragmentManager();
             fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment,new share());
-            fragmentTransaction.commit();
+            fragmentTransaction.commit();*/
         }
 
         return true;
