@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class deleteItemsActivity extends AppCompatActivity {
 
-    public static TextView resultdeleteview;
+    public static EditText resultdeleteview;
     private FirebaseAuth firebaseAuth;
-    Button scantodelete, deletebtn;
+    Button deletebtn;
     DatabaseReference databaseReference;
 
     @Override
@@ -28,17 +29,9 @@ public class deleteItemsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delete_items);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(firebaseAuth.getCurrentUser().getDisplayName()).child("Items");
         resultdeleteview = findViewById(R.id.barcodedelete);
-        scantodelete = findViewById(R.id.buttonscandelete);
         deletebtn= findViewById(R.id.deleteItemToTheDatabasebtn);
-
-        scantodelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ScanCodeActivitydel.class));
-            }
-        });
 
         deletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +42,9 @@ public class deleteItemsActivity extends AppCompatActivity {
     }
     public void deletefrmdatabase()
     {
-        String deletebarcodevalue = resultdeleteview.getText().toString();
-        final FirebaseUser users = firebaseAuth.getCurrentUser();
-        String finaluser=users.getEmail();
-        String resultemail = finaluser.replace(".","");
-        if(!TextUtils.isEmpty(deletebarcodevalue)){
-            databaseReference.child(resultemail).child("Items").child(deletebarcodevalue).removeValue();
+        String deleteItemName = resultdeleteview.getText().toString();
+        if(!TextUtils.isEmpty(deleteItemName)){
+            databaseReference.child(deleteItemName).removeValue();
             Toast.makeText(deleteItemsActivity.this,"Item is Deleted",Toast.LENGTH_SHORT).show();
         }
         else{
