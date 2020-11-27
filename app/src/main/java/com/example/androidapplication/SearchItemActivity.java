@@ -68,7 +68,7 @@ public class SearchItemActivity extends AppCompatActivity {
                         .setQuery(firebaseSearchQuery, Items.class)
                         .build();
 
-        adapter=new ItemAdapter(options);
+        adapter=new ItemAdapter(options, this);
         mrecyclerview.setAdapter(adapter);
         adapter.startListening();
     }

@@ -87,7 +87,7 @@ public class viewInventoryActivity extends AppCompatActivity {
                         .setQuery(FirebaseDatabase.getInstance().getReference("users").child(users.getDisplayName()).child("Items"), Items.class)
                         .build();
 
-        adapter=new ItemAdapter(options);
+        adapter=new ItemAdapter(options, this);
         mrecyclerview.setAdapter(adapter);
     }
     @Override
