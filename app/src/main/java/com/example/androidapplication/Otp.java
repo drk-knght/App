@@ -76,6 +76,10 @@ public class Otp extends AppCompatActivity {
                       if(!userOTP.isEmpty() && userOTP.length()==6){
                           PhoneAuthCredential credential=PhoneAuthProvider.getCredential(verificationId,userOTP);
                           verifyAuth(credential);
+                          String Val="+"+codePicker.getSelectedCountryCode()+phoneNumber.getText().toString();
+                          MobileHelperClass mo=new MobileHelperClass(Val);
+                          DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                          rootRef.child("PhoneNo").child(user.getDisplayName()).setValue(mo);
                           Intent intent=new Intent(getApplicationContext(),MainActivity.class);
                           startActivity(intent);
                           finish();
@@ -95,9 +99,7 @@ public class Otp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Otp.this, "Authentication is Successful", Toast.LENGTH_SHORT).show();
-                    MobileHelperClass mo=new MobileHelperClass(phoneNumber.toString());
-                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                    rootRef.child("PhoneNo").child(user.getDisplayName()).setValue(mo);
+
                 }
                 else
                 {

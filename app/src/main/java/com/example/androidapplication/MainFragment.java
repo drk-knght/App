@@ -34,7 +34,7 @@ import java.io.IOException;
 import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment {
-    TextView name,email,profession,MobileNo;
+    TextView name,email,profession,PhoneNo;
     private static int RESULT_LOAD_IMAGE = 1;
     Button button, buttonLoadImage ;
     ImageView mImageview;
@@ -50,6 +50,7 @@ public class MainFragment extends Fragment {
         profession=v.findViewById(R.id.profession);
         button=v.findViewById(R.id.sign_out);
         buttonLoadImage=v.findViewById(R.id.buttonLoadPicture);
+        PhoneNo=v.findViewById(R.id.phone_no);
         mImageview = (ImageView) v.findViewById(R.id.Profile_img);
         v.findViewById(R.id.buttonLoadPicture).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,8 +103,8 @@ public class MainFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snap) {
                     MobileHelperClass mo=snap.getValue(MobileHelperClass.class);
-                    String no=mo.MobileNo;
-                    MobileNo.setText("Phone Number:"+no);
+                    String no=mo.MobileNo+" ";
+                    PhoneNo.setText("Phone Number:"+no);
                 }
 
                 @Override

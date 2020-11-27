@@ -3,8 +3,8 @@ package com.example.androidapplication;
 public class MobileHelperClass {
     String MobileNo;
 
-    public MobileHelperClass(String mobileNo) {
-        MobileNo = mobileNo;
+    public MobileHelperClass(String MobileNo) {
+        this.MobileNo = MobileNo;
     }
     public MobileHelperClass() {
     }
@@ -13,7 +13,7 @@ public class MobileHelperClass {
         return MobileNo;
     }
 
-    public void setMobileNo(String mobileNo) {
-        MobileNo = mobileNo;
+    public void setMobileNo(String MobileNo) {
+        this.MobileNo = MobileNo;
     }
 }
