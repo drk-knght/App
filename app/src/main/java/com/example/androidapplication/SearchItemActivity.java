@@ -61,7 +61,7 @@ public class SearchItemActivity extends AppCompatActivity {
     }
 
     public void firebasesearch(String searchtext){
-        Query firebaseSearchQuery = mdatabaseReference.orderByChild("itemname").startAt(searchtext).endAt(searchtext);
+        Query firebaseSearchQuery = mdatabaseReference.orderByKey().startAt(searchtext).endAt(searchtext);
 
         FirebaseRecyclerOptions<Items> options =
                 new FirebaseRecyclerOptions.Builder<Items>()
@@ -70,6 +70,7 @@ public class SearchItemActivity extends AppCompatActivity {
 
         adapter=new ItemAdapter(options);
         mrecyclerview.setAdapter(adapter);
+        adapter.startListening();
     }
 
     @Override
