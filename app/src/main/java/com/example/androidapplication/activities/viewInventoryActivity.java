@@ -60,27 +60,6 @@ public class viewInventoryActivity extends AppCompatActivity {
 
             }
         });
-//
-//        mdatabaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int sum=0;
-//                for(DataSnapshot ds : dataSnapshot.getChildren()){
-//                    System.out.println("Hello");
-////                    Map<String,Object> map = (Map<String, Object>) ds.getValue();
-////                    Object price = map.get("itemprice");
-////                    int pValue = Integer.parseInt(String.valueOf(price));
-////                    sum += pValue;
-////                    totalnoofsum.setText(String.valueOf(sum));
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
 
         FirebaseRecyclerOptions<Items> options =
                 new FirebaseRecyclerOptions.Builder<Items>()

@@ -31,6 +31,7 @@
         <activity android:name=".activities.Otp" />
         <activity android:name=".activities.FireBaseLoginActivity" />
         <activity android:name=".activities.Login" />
+        <activity android:name=".activities.ShareActivity"/>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
