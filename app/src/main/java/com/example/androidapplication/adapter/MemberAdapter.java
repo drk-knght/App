@@ -68,7 +68,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder
             super(itemView);
             taskText=(TextView) itemView.findViewById(R.id.event);
             timeAndDateText=(TextView) itemView.findViewById(R.id.timeAndDate);
-            topLayout1=(LinearLayout) itemView.findViewById(R.id.topLayout);
+
 
         }
     }

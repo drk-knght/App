@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient_1"
     tools:context=".activities.CreateEvent">
 
     <RelativeLayout
@@ -20,7 +21,6 @@
             android:hint="Enter Task" />
 
 
-
     <Button
         android:id="@+id/btn_time"
         android:layout_width="match_parent"
@@ -28,7 +28,8 @@
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="10dp"
         android:text="Select Time"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:backgroundTint="#040404" />
 
     <Button
         android:id="@+id/btn_date"
@@ -37,7 +38,8 @@
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="20dp"
         android:text="Select Date"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:backgroundTint="#050505" />
 
     <TextView
         android:id="@+id/editTextTextPersonName"
@@ -61,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="Done" />
+        android:text="Done"
+        app:backgroundTint="#040404" />
 
 </LinearLayout>

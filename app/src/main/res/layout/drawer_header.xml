@@ -8,11 +8,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="404dp"
-        android:layout_height="53dp"
+        android:layout_width="410dp"
+        android:layout_height="55dp"
         android:fontFamily="@font/aclonica"
-        android:gravity="center_horizontal|left"
-        android:text="  Hey!!"
+        android:text="            Hey!!"
         android:textColor="@color/teal_700"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +28,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/aclonica"
         android:gravity="center_horizontal|left"
-        android:text="  Looking for Something?"
+        android:text="              Looking for Something?"
         android:textColor="@color/teal_700"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

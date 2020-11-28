@@ -1,6 +1,7 @@
 package com.example.androidapplication.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -36,6 +37,10 @@ public class ToDo extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_to_do);
         createEvent = findViewById(R.id.btn_createEvent);
         recyclerView=findViewById(R.id.recyclerView);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         createEvent.setOnClickListener(this);
         memberList=new ArrayList<Member>();
         currentuser = fAuth.getInstance().getCurrentUser().getUid();
