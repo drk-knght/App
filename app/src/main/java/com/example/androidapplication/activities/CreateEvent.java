@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,19 +19,16 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.androidapplication.Member;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.example.androidapplication.R;
+import com.example.androidapplication.model.Member;
+import com.example.androidapplication.receiver.AlarmReceiver;
+import com.example.androidapplication.receiver.AlarmReceiver1;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 public class CreateEvent extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener {
@@ -203,7 +200,7 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent notificationIntent = new Intent(this, AlarmReceiver.class);
-        Intent smsIntent=new Intent(this,AlarmReceiver1.class);
+        Intent smsIntent=new Intent(this, AlarmReceiver1.class);
         notificationIntent.putExtra("event", event1);
         notificationIntent.putExtra("time", time1);
         notificationIntent.putExtra("date", date1);

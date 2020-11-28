@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.helper;
 
 public class UserHelperClass {
     public String name,email,password;

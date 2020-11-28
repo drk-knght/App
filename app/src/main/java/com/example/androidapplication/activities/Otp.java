@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidapplication.R;
+import com.example.androidapplication.helper.MobileHelperClass;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -80,7 +82,7 @@ public class Otp extends AppCompatActivity {
                           MobileHelperClass mo=new MobileHelperClass(Val);
                           DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                           rootRef.child("PhoneNo").child(user.getDisplayName()).setValue(mo);
-                          Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                          Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                           startActivity(intent);
                           finish();
                       }

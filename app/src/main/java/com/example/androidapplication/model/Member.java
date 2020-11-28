@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.model;
 
 public class Member {
     private String task;

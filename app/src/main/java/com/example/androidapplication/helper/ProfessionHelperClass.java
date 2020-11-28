@@ -1,7 +1,7 @@
-package com.example.androidapplication;
+package com.example.androidapplication.helper;
 
 public class ProfessionHelperClass {
-    String profession;
+    public String profession;
 
     public ProfessionHelperClass() {
 

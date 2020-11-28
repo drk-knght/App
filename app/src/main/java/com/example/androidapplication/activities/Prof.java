@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
+import com.example.androidapplication.helper.ProfessionHelperClass;
+import com.example.androidapplication.R;
+import com.example.androidapplication.helper.UserHelperClass;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DatabaseReference;
@@ -47,7 +49,7 @@ public class Prof extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Otp.class));
+                startActivity(new Intent(getApplicationContext(), Otp.class));
                 finish();
             }
         });

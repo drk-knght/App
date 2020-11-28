@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.receiver;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,6 +9,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.example.androidapplication.R;
+import com.example.androidapplication.activities.ToDo;
+import com.example.androidapplication.activities.MainActivity;
 
 import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
 

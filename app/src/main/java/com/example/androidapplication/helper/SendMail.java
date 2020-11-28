@@ -1,10 +1,12 @@
-package com.example.androidapplication;
+package com.example.androidapplication.helper;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.example.androidapplication.Config;
 
 import java.util.Properties;
 

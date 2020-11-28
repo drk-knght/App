@@ -1,19 +1,19 @@
-package com.example.androidapplication;
+package com.example.androidapplication.helper;
 
 public class MobileHelperClass {
-    String MobileNo;
+    public String mobileNo;
 
     public MobileHelperClass(String MobileNo) {
-        this.MobileNo = MobileNo;
+        this.mobileNo = MobileNo;
     }
     public MobileHelperClass() {
     }
 
     public String getMobileNo() {
-        return MobileNo;
+        return mobileNo;
     }
 
     public void setMobileNo(String MobileNo) {
-        this.MobileNo = MobileNo;
+        this.mobileNo = MobileNo;
     }
 }

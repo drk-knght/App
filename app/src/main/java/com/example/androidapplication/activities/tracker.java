@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.androidapplication.R;
+import com.example.androidapplication.activities.SearchItemActivity;
+import com.example.androidapplication.activities.additemActivity;
+import com.example.androidapplication.activities.deleteItemsActivity;
+import com.example.androidapplication.activities.viewInventoryActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -54,10 +59,10 @@ public class tracker extends AppCompatActivity implements View.OnClickListener {
         Intent i;
 
         switch (view.getId()){
-            case R.id.addItems : i = new Intent(this,additemActivity.class); startActivity(i); break;
-            case R.id.deleteItems : i = new Intent(this,deleteItemsActivity.class);startActivity(i); break;
+            case R.id.addItems : i = new Intent(this, additemActivity.class); startActivity(i); break;
+            case R.id.deleteItems : i = new Intent(this, deleteItemsActivity.class);startActivity(i); break;
             case R.id.scanItems : i = new Intent(this, SearchItemActivity.class);startActivity(i); break;
-            case R.id.viewInventory : i = new Intent(this,viewInventoryActivity.class);startActivity(i); break;
+            case R.id.viewInventory : i = new Intent(this, viewInventoryActivity.class);startActivity(i); break;
             default: break;
         }
     }

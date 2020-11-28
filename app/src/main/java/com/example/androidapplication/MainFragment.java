@@ -3,9 +3,7 @@ package com.example.androidapplication;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,6 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.androidapplication.activities.Login;
+import com.example.androidapplication.helper.MobileHelperClass;
+import com.example.androidapplication.helper.ProfessionHelperClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -106,7 +107,7 @@ public class MainFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snap) {
                     MobileHelperClass mo=snap.getValue(MobileHelperClass.class);
                     if(mo != null) {
-                        String no = mo.MobileNo + " ";
+                        String no = mo.getMobileNo() + " ";
                         PhoneNo.setText("Phone Number:" + no);
                     }
                 }
@@ -121,7 +122,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view){
                 FirebaseAuth.getInstance().signOut();
-                Intent intent=new Intent(getActivity(),Login.class);
+                Intent intent=new Intent(getActivity(), Login.class);
                 startActivity(intent);
             }
        });

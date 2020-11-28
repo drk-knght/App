@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidapplication.dialogue.ItemQuantityDialogue;
+import com.example.androidapplication.model.Items;
+import com.example.androidapplication.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 

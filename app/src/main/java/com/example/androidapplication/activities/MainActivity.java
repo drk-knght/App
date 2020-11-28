@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.androidapplication.MainFragment;
+import com.example.androidapplication.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseAuth fAuth;
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser() == null){
-            Intent intent=new Intent(MainActivity.this,Login.class);
+            Intent intent=new Intent(MainActivity.this, Login.class);
             startActivity(intent);
         }
 
@@ -72,12 +74,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if(menuitem.getItemId()==R.id.todo){
-            Intent intent1=new Intent(MainActivity.this,ToDo.class);
+            Intent intent1=new Intent(MainActivity.this, ToDo.class);
             startActivity(intent1);
         }
 
         if(menuitem.getItemId()==R.id.items){
-            Intent intent=new Intent(MainActivity.this,tracker.class);
+            Intent intent=new Intent(MainActivity.this, tracker.class);
             startActivity(intent);
         }
 

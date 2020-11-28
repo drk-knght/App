@@ -1,12 +1,10 @@
-package com.example.androidapplication;
+package com.example.androidapplication.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.widget.Toast;
 
-import java.util.logging.Level;
+import com.example.androidapplication.helper.SendMail;
 
 public class AlarmReceiver1 extends BroadcastReceiver {
 

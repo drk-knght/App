@@ -1,30 +1,24 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
-import android.app.DatePickerDialog;
 import android.app.PendingIntent;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.androidapplication.Member;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.example.androidapplication.R;
+import com.example.androidapplication.model.Member;
+import com.example.androidapplication.receiver.AlarmReceiver;
+import com.example.androidapplication.receiver.AlarmReceiver1;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Calendar;
 
 public class EditEvent extends AppCompatActivity implements View.OnClickListener {
     Button btn_time1, btn_date1, btn_delete1;

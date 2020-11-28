@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.dialogue;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.androidapplication.model.Items;
+import com.example.androidapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;

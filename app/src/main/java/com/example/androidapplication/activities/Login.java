@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidapplication.helper.ProfessionHelperClass;
+import com.example.androidapplication.R;
+import com.example.androidapplication.helper.UserHelperClass;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -51,7 +54,7 @@ public class Login extends AppCompatActivity {
 
         FirebaseUser user=mAuth.getCurrentUser();
         if(user!=null){
-            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -127,7 +130,7 @@ public class Login extends AppCompatActivity {
                             task.getResult().getUser().updateProfile(profileUpdates); //Update User Display Name here
 
                             Toast.makeText(Login.this, "User Created!!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Otp.class));
+                            startActivity(new Intent(getApplicationContext(), Otp.class));
 
                             finish();
 
@@ -142,7 +145,7 @@ public class Login extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),FireBase_login.class));
+                startActivity(new Intent(getApplicationContext(), FireBaseLoginActivity.class));
             }
         });
 
@@ -210,7 +213,7 @@ public class Login extends AppCompatActivity {
                             //add data to firebase database in Profile Section
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent=new Intent(getApplicationContext(),Prof.class);
+                            Intent intent=new Intent(getApplicationContext(), Prof.class);
                             finish();
                             startActivity(intent);
                         } else {

@@ -1,4 +1,4 @@
-package com.example.androidapplication;
+package com.example.androidapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.example.androidapplication.R;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;

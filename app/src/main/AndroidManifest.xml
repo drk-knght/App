@@ -12,26 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidApplication.NoActionBar">
-        <activity android:name=".viewInventoryActivity"></activity>
-        <activity android:name=".ScanCodeActivitysearch" />
-        <activity android:name=".SearchItemActivity" />
-        <activity android:name=".ScanCodeActivitydel" />
-        <activity android:name=".deleteItemsActivity" />
-        <activity android:name=".ScanCodeActivity" />
-        <activity android:name=".additemActivity" />
-        <activity android:name=".tracker" />
-        <activity android:name=".EditEvent" />
-        <activity android:name=".CreateEvent" />
-        <activity android:name=".ToDo" />
+        <activity android:name=".activities.viewInventoryActivity"></activity>
+        <activity android:name=".activities.ScanCodeActivitysearch" />
+        <activity android:name=".activities.SearchItemActivity" />
+        <activity android:name=".activities.ScanCodeActivitydel" />
+        <activity android:name=".activities.deleteItemsActivity" />
+        <activity android:name=".activities.ScanCodeActivity" />
+        <activity android:name=".activities.additemActivity" />
+        <activity android:name=".activities.tracker" />
+        <activity android:name=".activities.EditEvent" />
+        <activity android:name=".activities.CreateEvent" />
+        <activity android:name=".activities.ToDo" />
 
-        <receiver android:name=".AlarmReceiver" />
-        <receiver android:name=".AlarmReceiver1" />
+        <receiver android:name=".receiver.AlarmReceiver" />
+        <receiver android:name=".receiver.AlarmReceiver1" />
 
-        <activity android:name=".Prof" />
-        <activity android:name=".Otp" />
-        <activity android:name=".FireBase_login" />
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.Prof" />
+        <activity android:name=".activities.Otp" />
+        <activity android:name=".activities.FireBaseLoginActivity" />
+        <activity android:name=".activities.Login" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

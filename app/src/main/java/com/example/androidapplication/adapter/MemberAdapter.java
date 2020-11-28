@@ -1,22 +1,19 @@
-package com.example.androidapplication;
-import android.app.Activity;
+package com.example.androidapplication.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidapplication.EditEvent;
+import com.example.androidapplication.activities.EditEvent;
 import com.example.androidapplication.R;
-import com.example.androidapplication.Member;
+import com.example.androidapplication.model.Member;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder> {

@@ -1,4 +1,6 @@
-package com.example.androidapplication;
+package com.example.androidapplication.model;
+
+import java.util.Objects;
 
 public class Items {
     private String itemname;
@@ -39,5 +41,19 @@ public class Items {
 
     public void setItemname(String itemname) {
         this.itemname = itemname;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Items items = (Items) o;
+        return itemname.equals(items.itemname) &&
+                itemcategory.equals(items.itemcategory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemname, itemcategory);
     }
 }

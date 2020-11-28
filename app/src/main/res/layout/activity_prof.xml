@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bak_prof"
-    tools:context=".Prof">
+    tools:context=".activities.Prof">
 
     <Button
         android:id="@+id/button2"
