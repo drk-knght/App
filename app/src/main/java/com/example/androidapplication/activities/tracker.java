@@ -35,7 +35,7 @@ public class tracker extends AppCompatActivity implements View.OnClickListener {
 
         final FirebaseUser users = firebaseAuth.getCurrentUser();
         String finaluser=users.getDisplayName()+" ";
-        firebasenameview.setText("Welcome, "+finaluser);
+        firebasenameview.setText("Your Inventory, "+finaluser);
 //        toast.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
