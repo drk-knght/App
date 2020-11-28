@@ -27,7 +27,7 @@
             android:layout_marginTop="28dp"
             android:layout_marginBottom="60dp"
             android:fontFamily="@font/allura"
-            android:text="Your Inventory,"
+            android:text="Your Inventory"
             android:textColor="#F57C00"
             android:textSize="40sp"
             android:textStyle="bold" />

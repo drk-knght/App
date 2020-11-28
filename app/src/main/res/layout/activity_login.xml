@@ -109,7 +109,7 @@
         android:layout_height="69dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
-        android:text="Android Application"
+        android:text="Track &amp; Trigger"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"

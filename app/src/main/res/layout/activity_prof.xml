@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tracker_back"
+    android:background="@drawable/bg"
     tools:context=".activities.Prof">
 
     <Button
@@ -27,8 +27,9 @@
         android:gravity="center_horizontal"
         android:hint="Enter your Profession"
         android:inputType="textPersonName"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"

@@ -16,7 +16,7 @@
         android:layout_marginLeft="85dp"
         android:layout_marginTop="0dp"
         android:fontFamily="@font/allura"
-        android:text="Scan Items"
+        android:text="Search Items"
         android:textColor="#C1F8B0B0"
         android:textSize="45dp"
         android:textStyle="bold"
@@ -27,9 +27,9 @@
         android:id="@+id/imageButtonsearch"
         android:layout_width="58dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
         android:layout_marginLeft="315dp"
-        app:srcCompat="@drawable/ic_camera_alt_black_24dp"
+        android:layout_marginTop="9dp"
+        app:srcCompat="@drawable/ic_search_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
     <EditText

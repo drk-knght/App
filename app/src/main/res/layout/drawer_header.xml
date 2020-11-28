@@ -4,20 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="?attr/selectableItemBackground">
+    android:background="@drawable/toolbarback">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="404dp"
         android:layout_height="53dp"
-        android:gravity="center_horizontal"
-        android:text="Drawer Header"
-        android:textColor="@color/teal_200"
-        android:textSize="24sp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center_horizontal|left"
+        android:text="  Hey!!"
+        android:textColor="@color/teal_700"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.164" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="404dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center_horizontal|left"
+        android:text="  Looking for Something?"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
