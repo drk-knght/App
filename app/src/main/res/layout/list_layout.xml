@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:textColor="#ffff"
             android:textStyle="bold"
-            android:text="Item Qty $" />
+            android:text="Item Qty      " />
 
         <TextView
             android:id="@+id/viewitemqty_new"

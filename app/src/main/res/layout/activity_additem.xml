@@ -53,7 +53,6 @@
         android:textColor="#ffff"
         android:inputType="textPersonName"
         android:hint="Name"
-        android:text="Name"
         tools:layout_editor_absoluteX="114dp"
         tools:layout_editor_absoluteY="211dp" />
 
@@ -69,7 +68,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Category"
-        android:text="Category"
+
 
         tools:layout_editor_absoluteX="114dp"
         tools:layout_editor_absoluteY="211dp" />
@@ -124,7 +123,7 @@
         android:textColor="#ffff"
         android:inputType="number"
         android:hint="10"
-        android:text="10"
+
         tools:layout_editor_absoluteX="114dp"
         tools:layout_editor_absoluteY="211dp" />
 

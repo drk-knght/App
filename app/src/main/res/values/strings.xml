@@ -18,5 +18,13 @@
     <string name="close">close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string-array name="times">
+        <item>At the time of task</item>
+        <item>One Hour Before</item>
+        <item>Two Hours Before</item>
+        <item>Three Hours Before</item>
+        <item>Six Hours Before</item>
+        <item>Twelve Hours Before</item>
+        <item>One Day Before</item>
+    </string-array>
 </resources>

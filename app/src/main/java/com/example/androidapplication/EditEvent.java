@@ -36,7 +36,9 @@ public class EditEvent extends AppCompatActivity implements View.OnClickListener
     String a, b;
     String key3,key5;
     String currentuser;
+    String email;
     FirebaseAuth fAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,5 +85,13 @@ public class EditEvent extends AppCompatActivity implements View.OnClickListener
         PendingIntent broadcast = PendingIntent.getBroadcast(this, key4, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmManager.cancel(broadcast);
+        Intent smsIntent = new Intent(this, AlarmReceiver1.class);
+        smsIntent.putExtra("event", event1);
+        smsIntent.putExtra("time", time1);
+        smsIntent.putExtra("date", date1);
+        smsIntent.putExtra("email",email);
+        PendingIntent broadcast1 = PendingIntent.getBroadcast(this, (key4+1), smsIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        alarmManager.cancel(broadcast1);
     }
 }

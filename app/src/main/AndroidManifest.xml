@@ -25,6 +25,7 @@
         <activity android:name=".ToDo" />
 
         <receiver android:name=".AlarmReceiver" />
+        <receiver android:name=".AlarmReceiver1" />
 
         <activity android:name=".Prof" />
         <activity android:name=".Otp" />

@@ -19,20 +19,20 @@ public class AlarmReceiver extends BroadcastReceiver{
     public void onReceive(Context context, Intent intent) {
         Bundle bundle=intent.getExtras();
         String text=bundle.getString("event");
-        String date = bundle.getString("date") + " " + bundle.getString("time");
+        String date = bundle.getString("date") + " on " + bundle.getString("time");
 
         Intent notificationIntent = new Intent(context, ToDo.class);
 
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(ToDo.class);
+        stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(notificationIntent);
 
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification.Builder builder = new Notification.Builder(context);
 
-        Notification notification = builder.setContentTitle(text+" scheduled")
+        Notification notification = builder.setContentTitle(text+" scheduled at")
                 .setContentText(date)
                 .setTicker("New Message Alert!")
                 .setSmallIcon(R.mipmap.ic_launcher)
