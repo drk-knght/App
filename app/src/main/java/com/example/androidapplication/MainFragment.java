@@ -1,6 +1,7 @@
 package com.example.androidapplication;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -23,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import com.example.androidapplication.activities.Login;
 import com.example.androidapplication.helper.MobileHelperClass;
 import com.example.androidapplication.helper.ProfessionHelperClass;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +38,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.concurrent.Executor;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -173,30 +176,27 @@ public class MainFragment extends Fragment {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                byte[] bytes =  readBytes();
-                if(bytes != null){
-                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    mImageView.setImageBitmap(bmp);
-                }
+                readBytes();
             }
         });
         thread.run();
     }
 
-    private byte[] readBytes(){
-        Task<byte[]> uriTask = storageReference.getBytes(10000000000L);
-        try {
-            while (!uriTask.isComplete()) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+    private void readBytes(){
+            Task<byte[]> uriTask = storageReference.getBytes(10000000000L);
+            uriTask.addOnCompleteListener(getActivity(), new OnCompleteListener<byte[]>() {
+                @Override
+                public void onComplete(@NonNull Task<byte[]> task) {
+                    try {
+                        byte[] bytes = task.getResult();
+                        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        mImageView.setImageBitmap(bmp);
+                    }
+                    catch (Exception exp){
+
+                    }
                 }
-            }
-            return uriTask.isSuccessful() ? uriTask.getResult() : null;
-        }
-        catch (Exception exp){
-        }
-        return null;
+            });
+
     }
 }
