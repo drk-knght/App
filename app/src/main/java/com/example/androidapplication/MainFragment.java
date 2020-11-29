@@ -176,7 +176,7 @@ public class MainFragment extends Fragment {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-//                readBytes();
+                readBytes();
             }
         });
         thread.run();
