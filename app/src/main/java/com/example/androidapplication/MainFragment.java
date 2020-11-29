@@ -66,7 +66,7 @@ public class MainFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-//        storageReference = firebaseStorage.getReference().child("users").child(user.getDisplayName()).child("profile_image");
+        storageReference = firebaseStorage.getReference().child("users").child(user.getDisplayName()).child("profile_image");
 
         loadImageForUser();
         v.findViewById(R.id.buttonLoadPicture).setOnClickListener(new View.OnClickListener() {
