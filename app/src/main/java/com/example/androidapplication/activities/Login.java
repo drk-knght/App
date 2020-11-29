@@ -45,9 +45,6 @@ public class Login extends AppCompatActivity {
     String userID;
     private FirebaseAuth mAuth;
 
-    FirebaseDatabase rootNode;
-    DatabaseReference reference,reference_2;
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -101,44 +98,16 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
+                Intent intent = new Intent(getApplicationContext(), Otp.class) ;
+                intent.putExtra("user", fullName);
+                intent.putExtra("email", mEmail.getText().toString());
+                intent.putExtra("password", mPassword.getText().toString());
+                intent.putExtra("profession", mNaukri.getText().toString());
+
+                startActivity(intent);
+                finish();
+
                 // register the user in firebase
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-
-                            //Add user to firebase database
-                            rootNode=FirebaseDatabase.getInstance();
-                            reference=rootNode.getReference("users");
-                            reference_2=rootNode.getReference("Profession");
-
-                            String name=mFullName.getText().toString();
-                            String password=mPassword.getText().toString();
-                            String email=mEmail.getText().toString();
-                            String Profession=mNaukri.getText().toString();
-
-                            ProfessionHelperClass pro=new ProfessionHelperClass(Profession);
-                            reference_2.child(name).setValue(pro);
-
-                            UserHelperClass helpers =new UserHelperClass(name,email,password);
-                            reference.child(name).setValue(helpers);
-
-
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName((String) name).build();
-
-                            task.getResult().getUser().updateProfile(profileUpdates); //Update User Display Name here
-
-                            Toast.makeText(Login.this, "User Created!!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), Otp.class));
-
-                            finish();
-
-                        }else {
-                            Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
             }
         });
 
