@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.example.androidapplication.activities.Login;
 import com.example.androidapplication.helper.MobileHelperClass;
 import com.example.androidapplication.helper.ProfessionHelperClass;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +31,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
@@ -38,9 +43,10 @@ public class MainFragment extends Fragment {
     TextView name,email,profession,PhoneNo;
     private static int RESULT_LOAD_IMAGE = 1;
     Button button, buttonLoadImage ;
-    ImageView mImageview;
+    ImageView mImageView;
     FirebaseAuth mAuth;
-    FirebaseUser user=mAuth.getInstance().getCurrentUser();
+    FirebaseUser user;
+    StorageReference storageReference;
 
     @Nullable
     @Override
@@ -52,7 +58,14 @@ public class MainFragment extends Fragment {
         button=v.findViewById(R.id.sign_out);
         buttonLoadImage=v.findViewById(R.id.buttonLoadPicture);
         PhoneNo=v.findViewById(R.id.phone_no);
-        mImageview = (ImageView) v.findViewById(R.id.Profile_img);
+        mImageView = (ImageView) v.findViewById(R.id.Profile_img);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference().child("users").child(user.getDisplayName()).child("profile_image");
+
+        loadImageForUser();
         v.findViewById(R.id.buttonLoadPicture).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,11 +150,53 @@ public class MainFragment extends Fragment {
                 Bitmap bitmapImage = null;
                 try {
                     bitmapImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
+                    saveImageForUser(bitmapImage);
+                    mImageView.setImageBitmap(bitmapImage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                mImageview.setImageBitmap(bitmapImage);
             }
         }
+    }
+
+    private void saveImageForUser(Bitmap bitmap) {
+        storageReference.putBytes(getBytes(bitmap));
+    }
+
+    private byte[] getBytes(Bitmap bmp) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
+    }
+
+    private void loadImageForUser() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                byte[] bytes =  readBytes();
+                if(bytes != null){
+                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    mImageView.setImageBitmap(bmp);
+                }
+            }
+        });
+        thread.run();
+    }
+
+    private byte[] readBytes(){
+        Task<byte[]> uriTask = storageReference.getBytes(10000000000L);
+        try {
+            while (!uriTask.isComplete()) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return uriTask.isSuccessful() ? uriTask.getResult() : null;
+        }
+        catch (Exception exp){
+        }
+        return null;
     }
 }
