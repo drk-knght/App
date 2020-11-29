@@ -77,6 +77,10 @@ public class Otp extends AppCompatActivity {
                       String userOTP=codeEnter.getText().toString();
                       if(!userOTP.isEmpty() && userOTP.length()==6){
                           PhoneAuthCredential credential=PhoneAuthProvider.getCredential(verificationId,userOTP);
+                          String Val="+"+codePicker.getSelectedCountryCode()+phoneNumber.getText().toString();
+                          MobileHelperClass mo=new MobileHelperClass(Val);
+                          DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                          rootRef.child("PhoneNo").child(user.getDisplayName()).setValue(mo);
                           verifyAuth(credential);
                       }
                       else
@@ -89,10 +93,6 @@ public class Otp extends AppCompatActivity {
     }
 
     private void moveToMainActivity() {
-        String Val="+"+codePicker.getSelectedCountryCode()+phoneNumber.getText().toString();
-        MobileHelperClass mo=new MobileHelperClass(Val);
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        rootRef.child("PhoneNo").child(user.getDisplayName()).setValue(mo);
         Intent intent=new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
