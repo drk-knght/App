@@ -1,2 +1,2 @@
 # App 
-This app is solely made by Shankar Agarwal,Om Agarwal,Juhil Desai,Kshitij Bhadoria,Ashutosh Tripathy.Any copy of it made should be taken prior permission of the owners.
+This android application make a personalised inventory (that has user details including profession and profile picture) according to the profession entered by the users and maintains a separate database in firebase's realtime database.Users can add,delete,search and dynamically change the quantity of items available in their inventory under different category and can share the same via What's app,Google Drive,Messages etc.
